@@ -198,7 +198,7 @@ def vote(message):
         c = bot.send_message(message.chat.id, result[2])
         d = bot.send_message(message.chat.id, result[3])
         check = bot.send_message(message.chat.id, '\n\n'
-                                                  'Все в порядке? Тогжа жми "Опубликовать"!\n'
+                                                  'Все в порядке? Тогда жми "Опубликовать"!\n'
                                                   'Что-то не так? Тогда жми "Restart"')
         bot.register_next_step_handler(check, vote)
 
@@ -210,12 +210,10 @@ def vote(message):
         r3 = bot.send_photo(CHANNEL_ID, result[0])
         r4 = bot.send_photo(CHANNEL_ID, result[1])
 
-
-
-        # push = bot.send_message(CHANNEL_ID, '???')
+        push = bot.send_photo(CHANNEL_ID, 'Поздравляю! Ваш Vote готов!')
         public = bot.send_message(message.chat.id, 'Теперь ты можешь найти свой Vote здесь:\n'
                                                    '@VoteForPic')
-        bot.register_next_step_handler(push, start)
+        # bot.register_next_step_handler(push, start)
 
     elif message.text == '🔁 Restart':
         rstrt = bot.send_message(message.chat.id, 'Понял, давай всё по новой 😌!\n'
